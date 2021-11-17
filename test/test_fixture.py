@@ -2,14 +2,6 @@
 import pytest
 
 
-@pytest.fixture(autouse=True)
-def login():
-    # yield前相当于setup，yield后相当于teardown，yield相当于return
-    print("登录")
-    yield ["返回值", 123]
-    print("退出")
-
-
 def test_case1(login):
     print(login)
     print("testcase1")

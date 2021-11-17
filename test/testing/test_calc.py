@@ -16,32 +16,33 @@ def get_datas():
 
 
 class TestCalc:
-    def setup_class(self):
-        print("计算开始")
-        self.calc = Calculator()
-
-    def teardown_class(self):
-        print("计算结束")
+    # 使用fixture代替
+    # def setup_class(self):
+    #     print("计算开始")
+    #     self.calc = Calculator()
+    #
+    # def teardown_class(self):
+    #     print("计算结束")
 
     @pytest.mark.parametrize(('a', 'b', 'expect'), get_datas()[0])
-    def test_add(self, a, b, expect):
-        result = self.calc.add(a, b)
+    def test_add(self, get_calc, a, b, expect):
+        result = get_calc.add(a, b)
         assert round(result, 2) == expect
 
     @pytest.mark.parametrize(('a', 'b', 'expect'), get_datas()[1])
-    def test_sub(self, a, b, expect):
-        result = self.calc.sub(a, b)
+    def test_sub(self, get_calc, a, b, expect):
+        result = get_calc.sub(a, b)
         assert result == expect
 
     @pytest.mark.parametrize(('a', 'b', 'expect'), get_datas()[2])
-    def test_mul(self, a, b, expect):
-        result = self.calc.mul(a, b)
+    def test_mul(self, get_calc, a, b, expect):
+        result = get_calc.mul(a, b)
         assert result == expect
 
     @pytest.mark.parametrize(('a', 'b', 'expect'), get_datas()[3])
-    def test_div(self, a, b, expect):
+    def test_div(self, get_calc, a, b, expect):
         try:
-            result = self.calc.div(a, b)
+            result = get_calc.div(a, b)
             assert round(result, 2) == expect
         except ZeroDivisionError as e:
             print(e)
