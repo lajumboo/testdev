@@ -4,11 +4,13 @@ import pytest
 from mycode.calculator import Calculator
 
 
-@pytest.fixture(scope='function')
-def login():
+# fixture带参数传递
+@pytest.fixture(scope='function', params=['tom', 'jerry'])
+def login(request):
     # yield前相当于setup，yield后相当于teardown，yield相当于return
     print("登录")
-    yield ["返回值", 123]
+    username = request.param
+    yield username
     print("退出")
 
 
