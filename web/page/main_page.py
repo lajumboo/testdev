@@ -11,10 +11,12 @@ from web.page.add_member_page import AddMemberPage
 class MainPage:
 
     def __init__(self):
+        # 跳过登录
         options = Options()
         options.debugger_address = "127.0.0.1:9222"
         self.driver = webdriver.Chrome(options=options)
 
+    # 跳转添加联系人页面
     def goto_add_member(self):
         self.driver.get("https://work.weixin.qq.com/wework_admin/frame")
         sleep(5)
