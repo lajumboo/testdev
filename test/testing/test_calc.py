@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
+import os
+
 import pytest
 import yaml
 
-from mycode.calculator import Calculator
-
 
 def get_datas():
-    with open("./datas/calc.yaml") as f:
+    with open(f"{os.path.dirname(__file__)}/datas/calc.yaml", encoding='utf-8') as f:
         datas = yaml.safe_load(f)
     add_datas = datas['add']['datas']
     sub_datas = datas['sub']['datas']
