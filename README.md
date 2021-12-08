@@ -7,3 +7,6 @@ python测试开发练手项目
 3. 接口自动化
 4. appcrawler
 5. mitmproxy
+6. docker
+7. jenkins
+8. 算法
